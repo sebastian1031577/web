@@ -2,95 +2,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pushover Notification</title>
+    <title>BASE DE DATOS</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="https://www.redacademica.edu.co/sites/default/files/2022-04/Escudo%20Rufino%20IED.jpg">
 </head>
 <body>
-   
-    <nav id="navbar">
+    
+   <nav id="navbar">
     <ul>
-   <li><a href="index.html">Notificaciones</a></li>
+        <li><a href="index.html">Notificaciones</a></li>
         <li><a href="presentación.html">Presentación</a></li>
         <li><a href="base.html">Registro</a></li>
-        <li><a href="terminos.html">Términos y condiciones</a></li>
-       <li> <a href="registro_exitoso.php">Base de Datos</a> </li>
+        <li><a href="registro_exitoso.php">Base de Datos</a> </li>
+       
     </ul>
     </div>
 </nav>
-
     <div id="container">
-        <h1>Enviar Notificación</h1>
-        <h2>con Pushover</h2>
-        <form id="pushoverForm">
-            <label for="message">Mensaje:</label><br>
-            <input type="text" id="message" name="message" required><br>
-            <label for="title">Título:</label><br>
-            <input type="text" id="title" name="title" value="Es Hora De Rotar!!"><br>
-            <input type="submit" value="Enviar">
-        </form>
-    </div>
+        <h2>Registro de Usuario</h2>
+       <form action="procesar_registro.php" method="post">
+    <label for="usuario">Usuario:</label><br>
+    <input type="text" id="usuario" name="usuario" required><br><br>
 
-    <div id="creators">
-        <p>Brayan Zabala y Sebastián Martínez</p>
-    </div>
+    <label for="user_key">User Key:</label><br>
+    <input type="text" id="user_key" name="user_key" required><br><br>
 
-    <div id="redes11">
-        <p>Redes 11</p>
-    </div>
+    <label for="curso">Curso:</label><br>
+    <input type="text" id="curso" name="curso" required><br><br>
 
-    <script>
-    document.getElementById("pushoverForm").addEventListener("submit", function(event) {
-        event.preventDefault(); 
-
-        var message = document.getElementById("message").value;
-        var title = document.getElementById("title").value;
-
-        
-        var userKeys = [
-            'uc8cu7ajzgnfwi3kwush7dj3636qkp'
-            
-        ];
-        var apiToken = 'aw73k4i32ui5ewkg3czbs8grywaksa'; 
-
-        
-        userKeys.forEach(userKey => {
-            var data = new URLSearchParams();
-            data.append('token', apiToken);
-            data.append('user', userKey);
-            data.append('message', message);
-            data.append('title', title);
-
-            fetch("https://api.pushover.net/1/messages.json", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: data,
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 1) {
-                    alert("Notificación enviada con éxito a " + userKey + "!");
-                } else {
-                    alert("Error al enviar la notificación a " + userKey + ": " + data.errors.join(", "));
-                }
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                alert("Error en la solicitud para " + userKey + ".");
-            });
-        });
-    });
-
-    function toggleMenu() {
+    <input type="submit" value="Registrar">
+</form>
+<a href="terminos.html">Términos y condiciones</a></li>
+<script>
+function toggleMenu() {
         var dropdown = document.getElementById("dropdown-menu");
-        dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+        if (dropdown.style.display === "block") {
+            dropdown.style.display = "none";
+        } else {
+            dropdown.style.display = "block";
+        }
     }
-</script>
-
-</body>
-</html>
+    </script>
+    </body>
+    </html>
 
 
 
