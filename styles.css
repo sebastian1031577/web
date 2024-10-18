@@ -4,7 +4,7 @@ body {
     font-family: Arial, sans-serif;
     height: 100vh;
     margin: 0;
-    background-image: url('astronauta.jpeg'); 
+   
     background-size: cover;
     background-position: center;
     display: flex;
