@@ -1,134 +1,50 @@
-<html lang="es">
+<html>
+<html lang="es"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pushover Notification</title>
+    <title>PRESENTACIÓN</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="https://www.redacademica.edu.co/sites/default/files/2022-04/Escudo%20Rufino%20IED.jpg">
-    <style>
-        body.blackout {
-            background-color: black;
-            color: white;
-        }
-        #passwordPrompt {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1000;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-    </style>
+    
 </head>
-<body onload="askForPassword()">
-   
-    <div id="passwordPrompt">
-        <h2>Ingrese la contraseña:</h2>
-        <input type="password" id="passwordInput">
-        <button onclick="checkPassword()">Aceptar</button>
-        <p id="errorMessage" style="color: red;"></p>
-    </div>
+<body>
+    
+   <nav id="navbar">
+    <ul>
+     
+        <li><a href="index.html">Presentación</a></li>
+        <li><a href="base.html">Registro</a></li>
+      
+    </ul>
+</nav>
 
-    <nav id="navbar" style="display:none;">
-        <ul>
-            <li><a href="index.html">Notificaciones</a></li>
-            <li><a href="presentación.html">Presentación</a></li>
-            <li><a href="base.html">Registro</a></li>
-            <li><a href="registro_exitoso.php">Base de Datos</a></li>
-        </ul>
-    </nav>
+<div id="container">
 
-    <div id="container" style="display:none;">
-        <h1>Enviar Notificación</h1>
-        <h2>con Pushover</h2>
-        <form id="pushoverForm">
-            <label for="message">Mensaje:</label><br>
-            <input type="text" id="message" name="message" required><br>
-            <label for="title">Título:</label><br>
-            <input type="text" id="title" name="title" value="Es Hora De Rotar!!"><br>
-            <input type="submit" value="Enviar">
-        </form>
-    </div>
+    <section id="inicio">
+	<center>
+        <h1>Definición</h1>
+		</center>
+        <p>Esta plataforma se creó con el fin de asegurar la asistencia para el día de modalidades y se respeten los horarios de la mejor forma posible brindando notificaciones instantáneas a los estudiantes de las diversas modalidades encargados de la rotación de los estudiantes de los demás cursos.</p>
+    </section>
 
-    <div id="creators" style="display:none;">
-        <p>Brayan Zabala y Sebastián Martínez</p>
-    </div>
+    <section id="acerca">
+	<center>
+        <h2>Muestra:</h2>
+		</center>
+        <p>A continuación una demostración de las notificaciones:</p>
+        <img src="Demostración.jpeg" alt="Demostración de notificaciones" width="300" height="200">
+    </section>
 
-    <div id="redes11" style="display:none;">
-        <p>Redes 11</p>
-    </div>
+    <section id="servicios">
+	<center>
+        <h2>Servicios</h2>
+		</center>
+        <p>Ofrecemos un sistema de notificaciones instantáneas con el fin de generar una mejor gestión de rotación durante los eventos educativos.</p>
+    </section>
+</div>
 
-    <script>
-        let attempts = 0;
 
-        function askForPassword() {
-            document.getElementById("passwordPrompt").style.display = "block";
-        }
-
-        function checkPassword() {
-            const password = document.getElementById("passwordInput").value;
-            const correctPassword = "pollo123";
-
-            if (password === correctPassword) {
-                document.getElementById("passwordPrompt").style.display = "none";
-                document.getElementById("navbar").style.display = "block";
-                document.getElementById("container").style.display = "block";
-                document.getElementById("creators").style.display = "block";
-                document.getElementById("redes11").style.display = "block";
-            } else {
-                attempts++;
-                document.getElementById("errorMessage").innerText = "Contraseña incorrecta. Intentos restantes: " + (10 - attempts);
-                if (attempts >= 10) {
-                    document.body.classList.add('blackout');
-                }
-            }
-        }
-
-        document.getElementById("pushoverForm").addEventListener("submit", function(event) {
-            event.preventDefault(); 
-
-            var message = document.getElementById("message").value;
-            var title = document.getElementById("title").value;
-
-            var userKeys = [
-                
-                 'uc8cu7ajzgnfwi3kwush7dj3636qkp'
-            ];
-            var apiToken = 'aw73k4i32ui5ewkg3czbs8grywaksa'; 
-
-            userKeys.forEach(userKey => {
-                var data = new URLSearchParams();
-                data.append('token', apiToken);
-                data.append('user', userKey);
-                data.append('message', message);
-                data.append('title', title);
-
-                fetch("https://api.pushover.net/1/messages.json", {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    body: data,
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 1) {
-                        alert("Notificación enviada con éxito a " + userKey + "!");
-                    } else {
-                        alert("Error al enviar la notificación a " + userKey + ": " + data.errors.join(", "));
-                    }
-                })
-                .catch(error => {
-                    console.error("Error:", error);
-                    alert("Error en la solicitud para " + userKey + ".");
-                });
-            });
-        });
-    </script>
 
 </body>
 </html>
