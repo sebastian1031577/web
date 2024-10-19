@@ -1,0 +1,251 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOTIFICACIÓN</title>
+  
+    <link rel="icon" href="https://www.redacademica.edu.co/sites/default/files/2022-04/Escudo%20Rufino%20IED.jpg">
+   <style>
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    margin: 0;
+    background-image: url('exploracion.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(34, 34, 34, 0.8);
+    border-bottom: 5px solid #800080;
+    padding: 10px 0;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+#navbar ul li {
+    margin: 0 15px;
+}
+
+#navbar ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#navbar ul li a:hover {
+    background-color: #800080;
+}
+
+
+#container {
+    background-color: rgba(34, 34, 34, 0.9);
+    padding: 40px;
+    border-radius: 15px;
+    border: 5px solid #800080;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    animation: borderColorChange 15s infinite;
+}
+
+
+h1, h2, label {
+    color: #800080;
+    animation: titleColorChange 15s infinite;
+    margin-top: 0;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Botón elegante */
+input[type="submit"] {
+    background-color: #800080;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #a64ca6;
+}
+
+
+#creators, #redes11 {
+    position: absolute;
+    bottom: 20px;
+    font-size: 14px;
+    color: white;
+    text-shadow: 1px 1px 5px black;
+}
+
+#creators {
+    left: 20px;
+    animation: creatorColorChange 9s infinite;
+}
+
+#redes11 {
+    right: 20px;
+    animation: redes11ColorChange 3s infinite;
+}
+
+
+@keyframes borderColorChange {
+    0% { border-color: #4B0082; }
+    20% { border-color: #800080; }
+    40% { border-color: #8A2BE2; }
+    60% { border-color: #9370DB; }
+    80% { border-color: #BA55D3; }
+    100% { border-color: #4B0082; }
+}
+
+@keyframes creatorColorChange {
+    0% { color: #0000FF; }
+    33% { color: #1E90FF; }
+    66% { color: #4169E1; }
+    100% { color: #0000FF; }
+}
+
+@keyframes redes11ColorChange {
+    0%, 100% { color: #FF4500; }
+    20% { color: #32CD32; }
+    40% { color: #FFD700; }
+    60% { color: #00CED1; }
+    80% { color: #DA70D6; }
+}
+
+@keyframes titleColorChange {
+    0% { color: #4B0082; }
+    20% { color: #800080; }
+    40% { color: #8A2BE2; }
+    60% { color: #9370DB; }
+    80% { color: #BA55D3; }
+    100% { color: #4B0082; }
+}
+a {
+    color: #d0f0fd;
+    text-decoration: none;
+    background-color: #5d3c65;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 2px solid #a64ca6;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    display: inline-block;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+
+a:hover {
+    background-color: #a64ca6;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <h1>Enviar Notificación</h1>
+        <h2>con Pushover</h2>
+        <form id="pushoverForm">
+            <label for="message">Mensaje:</label><br>
+            <input type="text" id="message" name="message" required><br>
+
+            <label for="title">Título:</label><br>
+            <input type="text" id="title" name="title" value="Es Hora De Rotar!!"><br>
+
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+
+    <div id="creators">
+        <p>Brayan Zabala y Sebastián Martínez</p>
+    </div>
+
+    <div id="redes11">
+        <p>Redes 11</p>
+    </div>
+
+    <script>
+        document.getElementById('pushoverForm').addEventListener('submit', function (e) {
+            e.preventDefault(); 
+
+            const message = document.getElementById("message").value;
+            const title = document.getElementById("title").value;
+
+            // Array con las user keys ocultas
+            const userKeys = [
+                'uc8cu7ajzgnfwi3kwush7dj3636qkp', // Sebastián Martínez
+                'um7tieoq7kp48877seoiu5pae9r771', // David Ródriguez 
+                'us2h2frggktiq5nudj98tjuw95bswc' // Anyi Castillo 
+                // Agrega más user keys aquí
+            ];
+
+            const apiToken = 'aw73k4i32ui5ewkg3czbs8grywaksa';
+
+            userKeys.forEach(userKey => {
+                const data = new URLSearchParams();
+                data.append('token', apiToken);
+                data.append('user', userKey);
+                data.append('message', message);
+                data.append('title', title);
+
+                fetch("https://api.pushover.net/1/messages.json", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: data,
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const msg = data.status === 1 
+                        ? "Se envió la notificación" 
+                        : "Error al enviar notificación";
+                    alert(msg);
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("Error al enviar notificación");
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
+
