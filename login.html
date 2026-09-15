@@ -2,18 +2,59 @@
 <head>
 <title>Iniciar sesión - Nébula</title>
 <style>
-body { background-color: #f3effa; color: #2e1f4d; font-family: Arial; }
-h1 { color: #6b3fa0; }
-input[type=submit] { background-color: #8a5cf6; color: white; padding: 6px 14px; border: none; border-radius: 4px; }
+body {
+    background-image: url("agua.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+input {
+    padding: 6px;
+    border-radius: 4px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    background-color: #009BE6;
+    color: white;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+a {
+		color: white;
+	  background-color: #009BE6;
+	border-radius: 6px;
+	  padding: 5px 5px;
+}
+p, h1 {
+		color: white;
+ 
+}
+.container {
+    background-color: rgba(20, 12, 40, 0.65);
+    border: 2px solid #5C2E5C;
+    padding: 20px;
+    width: 20%;
+    margin: 30px auto;
+    border-radius: 10px;
+    color: black;
+}
 </style>
 </head>
 <body>
-
+<div class="container">
 <form action="index.html">
 <h1>Iniciar sesión</h1>
 <p>
 <label for="correo">Introduzca correo electrónico:</label>
 <input type="email" id="correo" placeholder="usuario@ejemplo.com">
+</p>
+<p>
+<label for="nombre">Introduzca nombre de usuario:</label>
+<input type="text" id="correo" placeholder="Noobmaster">
 </p>
 <p>
 <label for="contrasena">Introduzca contraseña:</label>
@@ -26,6 +67,6 @@ input[type=submit] { background-color: #8a5cf6; color: white; padding: 6px 14px;
 
 <p><a href="register.html">¿No tienes cuenta? Regístrate</a></p>
 <p><a href="index.html">Volver a la tienda</a></p>
-
+</div>
 </body>
 </html>
