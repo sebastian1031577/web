@@ -1,12 +1,17 @@
-<html>
-<head>
-<title>Iniciar sesión - Nébula</title>
-<style>
+/* Configuración general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
+    
+    /* Fondo con imagen */
     background-image: 
         linear-gradient(rgba(40, 0, 70, 0.65), rgba(90, 20, 130, 0.65)),
-        url("pokemon.jpg");
+        url("fondo.jpg");
 
     background-size: cover;
     background-position: center;
@@ -16,27 +21,51 @@ body {
     min-height: 100vh;
     color: white;
 }
-</style>
-</head>
-<body>
 
-<form action="index.html">
-<h1>Iniciar sesión</h1>
-<p>
-<label for="correo">Introduzca correo electrónico:</label>
-<input type="email" id="correo" placeholder="usuario@ejemplo.com">
-</p>
-<p>
-<label for="contrasena">Introduzca contraseña:</label>
-<input type="password" id="contrasena">
-</p>
-<p>
-<input type="submit" value="Iniciar sesión">
-</p>
-</form>
+/* Contenedor principal */
+.container {
+    width: 80%;
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
 
-<p><a href="register.html">¿No tienes cuenta? Regístrate</a></p>
-<p><a href="index.html">Volver a la tienda</a></p>
+    background-color: rgba(60, 20, 90, 0.85);
+    border-radius: 15px;
+    
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
 
-</body>
-</html>
+/* Títulos */
+h1 {
+    color: #e0b3ff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #c77dff;
+}
+
+/* Texto */
+p {
+    line-height: 1.6;
+    color: #f0e6f7;
+}
+
+/* Botón */
+button {
+    background-color: #8e44ad;
+    color: white;
+
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #a855f7;
+    transform: scale(1.05);
+}
